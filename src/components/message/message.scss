@@ -1,0 +1,14 @@
+.message {
+  background-color: rgb(0, 140, 255);
+  max-width: 440px;
+  padding: 5px;
+  margin-top: 5px;
+  &__friend {
+    margin-right: auto;
+    border-radius: 0 10px 10px 0;
+  }
+  &__your {
+    margin-left: auto;
+    border-radius: 10px 0 0 10px;
+  }
+}
