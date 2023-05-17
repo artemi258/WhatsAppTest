@@ -11,13 +11,22 @@ class MessagesController {
   request: HTTPTransport;
   addIdChat: (id: string) => void;
   addMessages: (messages: unknown[] | string) => void;
+  userData: {
+    IdInstance: string;
+    ApiTokenInstance: string;
+  };
 
   constructor(
     addIdChat: (id: string) => void,
-    addMessages: (messages: unknown[] | string) => void
+    addMessages: (messages: unknown[] | string) => void,
+    userData: {
+      IdInstance: string;
+      ApiTokenInstance: string;
+    }
   ) {
     this.addIdChat = addIdChat;
     this.addMessages = addMessages;
+    this.userData = userData;
     this.request = new HTTPTransport();
   }
 
@@ -28,10 +37,13 @@ class MessagesController {
       .then((res) => {
         this.addIdChat(res.idMessage);
         this.addMessages(message);
+        this.getNotificatione(
+          `waInstance${this.userData.IdInstance}/ReceiveNotification/${this.userData.ApiTokenInstance}`
+        );
       })
       .catch((err) => console.log(err));
   };
-  getMessage = (url: string) => {
+  getNotificatione = (url: string) => {
     this.request
       .get(url)
       .then((res) => console.log(res))

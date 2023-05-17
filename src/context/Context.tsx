@@ -6,10 +6,15 @@ const Context = createContext<IData>({
   currentChat: "",
   idMessage: "",
   messages: [],
+  userData: {
+    IdInstance: "",
+    ApiTokenInstance: "",
+  },
   addChat: () => {},
   startChat: () => {},
   addIdChat: () => {},
   addMessages: () => [],
+  addUserData: () => {},
 });
 
 export default Context;

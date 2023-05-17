@@ -1,4 +1,4 @@
-import { MouseEventHandler } from "react";
+import { memo, MouseEventHandler } from "react";
 import "./chatsList.scss";
 
 interface IChatsListProps {
@@ -7,7 +7,11 @@ interface IChatsListProps {
   onGetMessages: (phone: string) => void;
 }
 
-function ChatsList({ phone, onClick, onGetMessages }: IChatsListProps) {
+const ChatsList = memo(function ChatsList({
+  phone,
+  onClick,
+  onGetMessages,
+}: IChatsListProps) {
   return (
     <li
       onClick={(e) => {
@@ -19,6 +23,6 @@ function ChatsList({ phone, onClick, onGetMessages }: IChatsListProps) {
       {phone}
     </li>
   );
-}
+});
 
 export default ChatsList;
